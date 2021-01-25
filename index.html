@@ -4,35 +4,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learning Vue</title>
   <script src="https://unpkg.com/vue@3.0.2"></script>
+
+  <style>
+    .box {
+      padding: 100px 0;
+      width: 400px;
+      text-align: center;
+      background: #ddd;
+      margin: 20px;
+      display: inline-block;
+    }
+  </style>
+
 </head>
 <body>
   <h1>Hello, Vue :)</h1>
 
   <div id="app">
-    <div v-if="showBooks">
-      <p>{{ title }} - {{ author }} - {{ age }}</p>
-
-      <button v-on:click="age++">Increase age</button>
-      <button v-on:click="age--">Decrease age</button>
-      <div v-on:click="changeTitle('Oathbringer')">Change book title</div>
-    </div>
-    <br>
     <button v-on:click="toggleShowBooks">
       <span v-if="showBooks">Hide Books</span>
       <span v-else>Show Books</span>
     </button>
 
     <div v-show="showBooks"><p>Currently showing books</p></div>
+    <a v-bind:href="url">Best website ever</a>
     
+    <br>
+    
+    <div v-if="showBooks">
+      <!-- <p>{{ title }} - {{ author }} - {{ age }}</p>
+
+      <button v-on:click="age++">Increase age</button>
+      <button v-on:click="age--">Decrease age</button>
+      <div v-on:click="changeTitle('Oathbringer')">Change book title</div> -->
+      <ul>
+        <li v-for="book in books">
+          <h3>{{ book.title }}</h3>
+          <p>{{ book.author }}</p>
+        </li>
+      </ul>
+    </div>
+    <br>
+
+    <div class="box" @mouseover="handleEvent($event)">mouseover</div>
+    <div class="box" @mouseleave="handleEvent">mouseleave</div>
+    <div class="box" @dblclick="handleEvent">double click</div>
+    <div class="box" @mousemove="handleMousemove">postion - {{ x }} {{ y }}</div>
 
     <br>
-    <br>
 
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-
+    
   </div>
   <script src="app.js"></script>
 </body>
