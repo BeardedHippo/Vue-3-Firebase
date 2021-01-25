@@ -3,8 +3,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learning Vue</title>
+  <script src="https://unpkg.com/vue@3.0.2"></script>
 </head>
 <body>
-  <h1>Hello, Vuess :)</h1>
+  <h1>Hello, Vue :)</h1>
+
+  <div id="app">
+    <div v-if="showBooks">
+      <p>{{ title }} - {{ author }} - {{ age }}</p>
+
+      <button v-on:click="age++">Increase age</button>
+      <button v-on:click="age--">Decrease age</button>
+      <div v-on:click="changeTitle('Oathbringer')">Change book title</div>
+    </div>
+    <br>
+    <button v-on:click="toggleShowBooks">
+      <span v-if="showBooks">Hide Books</span>
+      <span v-else>Show Books</span>
+    </button>
+
+    <div v-show="showBooks"><p>Currently showing books</p></div>
+    
+
+    <br>
+    <br>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>
